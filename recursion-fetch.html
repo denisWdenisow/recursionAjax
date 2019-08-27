@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-language" content="ru" />
+
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="private" />
+
+
+
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+	</head>
+
+	<body>
+
+		
+		<script>
+
+			const sendRequest = (maxRequestCount, counter = 1) => {
+				if (counter > maxRequestCount ){
+					alert('Завершено');
+					return;
+				}
+				fetch('http://localhost/recursion-fetch.html')
+					.then((result) => {
+							console.log(result);
+							sendRequest(maxRequestCount, counter + 1);
+			  			})
+			  		.catch((err) => {  
+					    	console.log('Fetch Error :-S', err);  
+					 	})
+			}
+
+			let maxRequestCount = 50;
+			sendRequest(maxRequestCount);
+
+		</script>
+
+	</body>
+</html>
+
+
